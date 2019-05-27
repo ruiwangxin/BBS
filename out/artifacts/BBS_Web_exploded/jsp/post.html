@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Post</title>
+	 <link rel="stylesheet" type="text/css" href="../css/post.css">
+</head>
+
+<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+	function btnPost() {
+		var post = '{"post_title":"' + $("#headline").val() + '","post_content":"' + $("#content").val() + '"}'
+		console.log(post)
+		$.ajax({
+			url: "/addPost.bbs",
+			data: post,
+			contentType: "application/json;charset=utf-8",
+			type: "post",
+			dataType: "json"
+		})
+	}
+
+</script>
+<body>
+	<div class="head">
+		<div class="head_list">
+		<span class="head_first">欢迎XX登录BBS系统</span>
+		<div class="head_double">
+			<span><a href="../jsp/main.html">论坛主页</a></span>
+			<span><a href="../jsp/postList.jsp">浏览帖子</a></span>
+			<span><a href="../jsp/post.html">发布帖子</a></span>
+			<span><a href="/jsp/personalCenter.jsp">个人中心</a></span>
+		</div>
+		<span class="head_last"><a href="/index.bbs">退出系统</a></span>
+		</div>
+	</div>
+	<br>
+	<div class="main">
+		<fieldset>
+			<legend>发表帖子</legend>
+			<label><span>标题：</span><input id="headline" type="text" name="headline"></label>
+			<br>
+			<label class="content"><span>内容：</span><input id="content" type="text" name="content"></label>
+			<label class="button"><input type="button" name="" value="发布帖子" onclick="btnPost()"></label>
+			<br><br>
+				<br><br>
+		</fieldset>
+	</div>
+
+</body>
+</html>

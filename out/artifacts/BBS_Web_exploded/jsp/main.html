@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>main</title>
+	 <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+	$.post("/main.bbs","",function(data)
+	{
+		console.log(data["user_name"])
+		document.getElementById("name_test").innerText = data["user_name"]
+		document.getElementById("name_test1").innerText = data["user_name"]
+		document.getElementById("datetime").innerText = data["user_logindate"]
+	})
+
+</script>
+<body>
+	<div class="head">
+		<div class="head_list">
+		<span class="head_first" >欢迎<span id="name_test" ></span>登录BBS系统</span>
+		<div class="head_double">
+			<span><a href="/jsp/main.html">论坛主页</a></span>
+			<span><a href="../jsp/postList.jsp">浏览帖子</a></span>
+			<span><a href="../jsp/post.html">发布帖子</a></span>
+			<span><a href="/jsp/personalCenter.jsp">个人中心</a></span>
+		</div>
+		<span class="head_last">
+			<a href="/index.bbs">退出系统</a>
+		</span>
+		</div>
+	</div>
+	<br>
+	<div class="main">
+			<form method="Post" action="">
+		<fieldset>
+			<legend>主界面</legend>
+				<div class="Data">
+					<span >欢迎<span id="name_test1"></span>再次登录BBS系统,你上次的登录时间为：<span id="datetime"></span></span>
+				</div>
+				<span class="text">为您催件目前比较火（坛内排名前三）的帖子：</span>
+				<div class="teizi">
+					<table>
+						<tr class="tr1">
+						<td>标题：xxx 用户名：xxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>发表日期：xxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<a href="">删除</a>
+							<a href="">修改</a>
+							<a href="">详情</a>
+						</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr class="tr2">
+						<td>内容：xxxxxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>浏览次数：xx 跟帖次数：xx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td style="text-align: right;">回复帖子</td>
+						</tr>
+					</table>
+				</div><br>
+
+				<div class="teizi">
+					<table>
+						<tr class="tr1">
+						<td>标题：xxx 用户名：xxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>发表日期：xxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<a href="">删除</a>
+							<a href="">修改</a>
+							<a href="">详情</a>
+						</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr class="tr2">
+						<td>内容：xxxxxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>浏览次数：xx 跟帖次数：xx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td style="text-align: right;">回复帖子</td>
+						</tr>
+					</table>
+				</div><br>
+
+				<div class="teizi">
+					<table>
+						<tr class="tr1">
+						<td>标题：xxx 用户名：xxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>发表日期：xxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<a href="">删除</a>
+							<a href="">修改</a>
+							<a href="">详情</a>
+						</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr class="tr2">
+						<td>内容：xxxxxxxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>浏览次数：xx 跟帖次数：xx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td style="text-align: right;">回复帖子</td>
+						</tr>
+					</table>
+				</div><br>
+
+			<br>
+		</fieldset>
+			</form>
+	</div>
+
+</body>
+</html>

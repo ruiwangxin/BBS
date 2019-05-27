@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bbs.mapper.CommentMapper">
+
+    <resultMap id="commentMap" type="comment">
+        <id property="comment_id" column="comment_id"/>
+        <result property="post_id" column="post_id"/>
+        <result property="comment_content" column="comment_content"/>
+        <result property="comment_createtime" column="comment_createtime"/>
+        <collection property="bbsUser" ofType="bbsUser">
+            <result property="user_name" column="user_name"/>
+        </collection>
+    </resultMap>
+    <select id="getCommentById" parameterType="Integer" resultMap="commentMap">
+            select
+                u.USER_NAME,
+                c.COMMENT_CONTENT,
+                c.COMMENT_CREATETIME,
+                c.POST_ID,
+                c.COMMENT_ID
+                from
+                bbs_post p,
+                bbs_user u,
+                bbs_comment c
+                <where>
+                    p.USER_ID = u.USER_ID
+                    and u.USER_ID = c.USER_ID
+                    and c.POST_ID = p.POST_ID
+                    <if test="post_id != null and post_id != ''">
+                        and c.POST_ID = #{post_id}
+                    </if>
+
+                </where>
+
+    </select>
+</mapper>

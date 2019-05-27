@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>registered</title>
+     <link rel="stylesheet" type="text/css" href="../css/registered.css">
+
+</head>
+<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+	function btn() {
+		var user_name = $("#user_name").val();
+		var user_password = $("#user_password").val();
+		var user_password1 = $("#user_password1").val();
+		var verifyCode = $("#verifyCode").val();
+		if(user_password == user_password1 && user_name != "") {
+			var BbsUser = '{"user_name":"' + user_name + '","user_password":"' + user_password + '","verifyCode":"'+verifyCode+'"}'
+			console.log(BbsUser)
+			$.ajax({
+				url: "/add",
+				data: BbsUser,
+				contentType: "application/json;charset=utf-8",
+				type: "post",
+				dataType: "json",
+				 success: function (data) {
+
+					if(data == true)
+					{
+						alert("注册成功")
+					}else{
+						alert("注册失败")
+					}
+				},
+				 error: function (err) {
+					alert(err)
+				}
+			})
+		}else if(user_name == "" || user_password == ""){
+			alert("账户或密码不能为空")
+		} else{
+			alert("密码不相同")
+		}
+
+	}
+
+
+	function checkimage()
+	{
+		var image =	document.getElementById("verifyCodeImage");
+		var date = new Date().getTime();
+		image.src = "/getVerifyCode.bbs?"+date;
+	}
+</script>
+<body>
+    <div class="user_registered_interface">
+        <span>欢迎光临Java9班BBS论坛-用户注册</span><br><br>
+    <div class="registered_interface">
+			<fieldset class="fieldset">
+				<legend>用户注册</legend>
+				<br>
+				<label><span class="text3">用户名</span>：<input id="user_name" type="text" name="user_name"></label><br><br>
+				<label><span class="password">密码</span>：<input id="user_password" type="text" name="user_password" ></label><br><br>
+
+				<label><span >确认密码</span>：<input id="user_password1" type="text" name="user_password1"></label><br><br>
+
+				<label><span class="text3">验证码:</span><input id="verifyCode" type="text" name="verifyCode" class="verification_style" ></label>
+				<img style="padding-left:20px;"  src="/getVerifyCode.bbs" width="60" height="25" id="verifyCodeImage" alt = "图破了" onclick = "checkimage()">
+				<br>
+				<label><input type="button" name="registered" value="注册"  onclick="btn()"></label><br>
+					&nbsp;&nbsp;&nbsp;&nbsp;<a href="../jsp/login.html">已有账号？去登录-></a><br>
+			</fieldset>
+    </div>   
+    </div> 
+</body>
+</html>

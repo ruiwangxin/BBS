@@ -1,0 +1,76 @@
+.head{
+	width: 60%;
+	margin-left: 20%;
+	border: 1px solid rgb(0,0,0);
+	margin-top: 5%;
+	float: left;
+	height: 40px;
+
+}
+.head .head_first{
+	font-size: 14px;
+	float: left;
+	margin-left: 2%;
+
+}
+.head .head_double{
+	float: left;
+	margin-left: 10%;
+	width: 60%
+
+}
+.head .head_double span{
+	display: block;
+	margin-left:5%;
+	float: left;
+	border-radius:10%;
+	border: 1px solid rgb(0,0,0);
+	width: 15%;
+	text-align: center;
+
+}
+.head .head_double span a{
+		text-decoration: none;
+		color: rgb(0,0,0);
+}
+.head .head_last{
+
+	font-size: 12px;
+	float: left;
+	border: 1px solid rgb(0,0,0);
+		border-radius:10%;
+		margin-top:0.5%;
+}
+.head .head_last a {
+	text-decoration: none;
+	color: rgb(0,0,0);
+}
+.head .head_list{
+	margin-top:1%;
+	margin-bottom: 1%
+}
+.main{
+	width: 60%;
+	float: left;
+	margin-left:20%;
+}
+.main label{
+	margin-left:20%;
+
+}
+.main label input{
+	width: 50%;
+}
+.main .content input{
+	height: 250px;
+	margin-top:2%;
+}
+.main .button input{
+	margin-top:2%;
+	margin-left:35%;
+	width: 20%;
+	height: 50px;
+	background:rgb(255,255,255);
+	border-radius:10px 10px 10px 10px;
+	border: 1px solid rgb(0,0,0);
+}

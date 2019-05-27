@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+     <link rel="stylesheet" type="text/css" href="../css/login.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function btnOnclick()
+	{
+		var user_name = $("#exampleInputAccount").val();
+		var user_password = $("#exampleInputPassword1").val();
+		var verifyCode = $("#verifyCode").val();
+		// if(user_password == user_password1 && user_name != "") {
+		var BbsUser = '{"user_name":"' + user_name + '","user_password":"' + user_password + '","verifyCode":"' + verifyCode + '"}'
+		console.log(BbsUser)
+		$.ajax({
+			url: "/Login.bbs",
+			data: BbsUser,
+			contentType: "application/json;charset=utf-8",
+			type: "post",
+			dataType: "json",
+			success:function(data)
+			{
+				if(data == 0)
+				{
+					alert("验证码错误")
+				}
+				if(data == null)
+				{
+					alert("账户或密码错误")
+				}
+				console.log(data)
+				if(data["user_name"] == user_name && data["user_password"] == user_password)
+				{
+					alert("登陆成功")
+					window.location.href="/main.html"
+
+				}
+			}
+		})
+	}
+	function checkimage()
+	{
+		var image =	document.getElementById("verifyCodeImage");
+		var date = new Date().getTime();
+		image.src = "/getVerifyCode.bbs?"+date;
+	}
+
+</script>
+<body>
+    <div class="user_login_interface">
+        <span>欢迎光临Java9班BBS论坛-用户登录</span><br><br>
+		<fieldset class="fieldset">
+			<legend>用户登录</legend>
+			<form>
+				<div class="form-group">
+					<label for="exampleInputAccount">Email address</label>
+					<input type="text" class="form-control" id="exampleInputAccount" name="exampleInputAccount" placeholder="Account">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" name="exampleInputPassword1" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<label for="verifyCodeImage">Security</label><br>
+					<input class="form-control" style="float:left;  width:180px;" type="text" id="verifyCode" name="verifyCode" placeholder="验证码" maxlength="4">
+					<img style="float: left; padding-left:20px;"  src="/getVerifyCode.bbs" width="110" height="34" id="verifyCodeImage" alt = "图破了" onclick = "checkimage()">
+<!--					<img src="/getVerifyCode.bbs" style="margin-left:5px" id="verifyCodeImage" alt = "">-->
+				</div>
+				<br>
+				<button type="button" class="btn btn-default" onclick="btnOnclick()">Submit</button>
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../jsp/registered.html">没有账号，注册一个-></a></label><br>
+			</form>
+		</fieldset>
+<!--    <div class="login_interface">-->
+<!--		<fieldset class="fieldset">-->
+<!--			<legend>用户登录</legend>-->
+<!--            <br>-->
+<!--			<label><span>用户名</span>：<input class="input-group" type="text" name="username"></label><br><br>-->
+<!--			<label><span class="password">密码</span>：<input type="text" name="password"></label><br><br>-->
+
+
+<!--			<label><span>验证码</span>：<input type="text" name="verification" class="verification_style"></label><br><br>-->
+
+<!--			<label><input type="button" name="login" value="登录" class="button">-->
+<!--                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../jsp/registered.html">没有账号，注册一个-></a></label><br><br>-->
+
+<!--		</fieldset>-->
+    </div> 
+</body>
+</html>

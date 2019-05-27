@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.bbs.mapper.BbsUserMapper">
+    <select id="getBbsUserById" parameterType="Integer" resultType="BbsUser">
+        select * from bbs_user where USER_ID = #{user_id}
+    </select>
+    <!--添加操作-->
+    <select id="setBbsUserBy" parameterType="BbsUser" >
+        insert into bbs_user values (null,#{user_name},#{user_password},now(),0,0,0)
+    </select>
+    <!--登录操作-->
+    <select id="getBbsUserBy" parameterType="BbsUser" resultType="BbsUser">
+        select * from bbs_user where USER_NAME = #{user_name} and USER_PASSWORD = #{user_password}
+    </select>
+
+    <!--登陆时修改登录时间-->
+    <select id="setLoginByName" parameterType="String" resultType="String">
+        update bbs_user set USER_LOGINDATE = now() where USER_NAME = #{user_name}
+    </select>
+
+    <!--修改密码-->
+    <select id="setLoginByPassword" parameterType="BbsUser" >
+        update bbs_user set USER_PASSWORD = #{user_password} where USER_ID = #{user_id}
+    </select>
+</mapper>
